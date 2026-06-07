@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { API_BASE_URL } from './api/config';
+import { useAuth } from './context/AuthContext';
 
 const MarketIntelligence = ({ onModuleSwitch }) => {
+  const { user } = useAuth();
   const [prices, setPrices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCrop, setSelectedCrop] = useState('All');
@@ -68,7 +70,7 @@ const MarketIntelligence = ({ onModuleSwitch }) => {
           <div className="flex items-center gap-3 px-4 py-4 mt-2">
             <img className="w-10 h-10 rounded-full object-cover border border-white/10" alt="Farmer Portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7hIbptporCZhDJWo_5R64q-Mdz_xd00E6wF_bi-3fb7phofEXbsPlMAs61Dl7JFmOe4pwQaPvEOKn4uCH1MmFs_FJhHMc3oRS-2Cpoi87jrv_tHWTsm38nOsXo_Y0gzp17w028HKT8dIa4qne_aZ6vbq4pzGkoaMuoGauY9SuOsBPfGEskLn4f98LWGxQfk26cwhB7rbqbJ-FOjOAR_vCQs_wkxJSKkLAgY0obFUEPaVtRhVhcWJzHoZ4sP0xdWXt5TLODMBXvMvR" />
             <div className="overflow-hidden">
-              <p className="text-sm font-bold text-white truncate">Ramesh Kumar</p>
+              <p className="text-sm font-bold text-white truncate">{user?.name || 'Farmer User'}</p>
               <p className="text-xs text-white/40 truncate tracking-wide uppercase font-mono">Premium Plan</p>
             </div>
           </div>

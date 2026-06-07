@@ -113,3 +113,43 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-forest);
 }
+
+/* Print styles for PDF Export */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-area, .printable-area * {
+    visibility: visible;
+  }
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+    color: black !important;
+  }
+  .no-print, .no-print * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  /* Reset backgrounds for high contrast printing */
+  .bg-white {
+    background-color: #ffffff !important;
+  }
+  .text-forest, .text-ink, .text-soil {
+    color: #000000 !important;
+  }
+  .bg-foam, .bg-mist, .bg-parchment {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+}
+

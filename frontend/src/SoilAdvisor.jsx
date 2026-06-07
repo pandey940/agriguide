@@ -228,17 +228,20 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
           </div>
           <div className="flex items-center gap-3 pr-40">
             <span className="text-[10px] font-mono font-bold bg-moss text-white px-3 py-1 rounded-full uppercase">v2.0 Beta</span>
-            <button className="text-xs font-bold text-moss border border-moss/25 px-4 py-1.5 rounded-lg hover:bg-mist transition-all flex items-center gap-1.5">
+            <button 
+              onClick={() => window.print()}
+              className="text-xs font-bold text-moss border border-moss/25 px-4 py-1.5 rounded-lg hover:bg-mist transition-all flex items-center gap-1.5"
+            >
               <span className="material-symbols-outlined text-base">download</span> Export PDF
             </button>
           </div>
         </header>
 
-        <div className="p-4 md:p-8 lg:p-12 max-w-[1200px] mx-auto">
+        <div className="p-4 md:p-8 lg:p-12 max-w-[1200px] mx-auto printable-area">
           {activeTab === 'analysis' ? (
             <div className="bg-white rounded-3xl border border-moss/10 p-10 shadow-sm max-w-2xl mx-auto">
               <h2 className="font-serif text-3xl font-bold text-forest mb-6">Analyze Your Soil</h2>
-              <div className="mb-8 p-6 bg-foam border-2 border-dashed border-sage/30 rounded-2xl text-center relative overflow-hidden group hover:border-sage transition-colors">
+              <div className="mb-8 p-6 bg-foam border-2 border-dashed border-sage/30 rounded-2xl text-center relative overflow-hidden group hover:border-sage transition-colors no-print">
                 <input type="file" onChange={handleOcrUpload} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept="image/*,.pdf" />
                 <div className="flex flex-col items-center gap-3">
                   {ocrLoading ? (
@@ -298,7 +301,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-forest text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-forest/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                  className="w-full bg-forest text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-forest/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3 no-print"
                 >
                   {loading ? 'Analyzing...' : (
                     <>
@@ -456,7 +459,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
                     </h3>
                     <button
                       onClick={() => setActiveTab('analysis')}
-                      className="text-xs font-bold text-mint bg-forest px-4 py-2 rounded-xl flex items-center gap-2 shadow-lg shadow-forest/20"
+                      className="text-xs font-bold text-mint bg-forest px-4 py-2 rounded-xl flex items-center gap-2 shadow-lg shadow-forest/20 no-print"
                     >
                       <span className="material-symbols-outlined text-base">edit</span> Update Data
                     </button>

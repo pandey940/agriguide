@@ -2,9 +2,51 @@ const express = require('express');
 const router = express.Router();
 const CommunityPost = require('../models/CommunityPost');
 
+// Seed some initial community posts if empty
+const seedCommunityData = async () => {
+  const count = await CommunityPost.countDocuments();
+  if (count === 0) {
+    await CommunityPost.create([
+      {
+        author: 'Rajesh Patil',
+        title: 'Yellowing leaves on Tomato plants',
+        content: 'Hi everyone, my tomato leaves are starting to show yellow patches with black concentric circles. Is this early blight? What treatment is best?',
+        category: 'Disease',
+        tags: ['Tomato', 'Blight'],
+        language: 'en',
+        upvotes: 12,
+        replies: [
+          {
+            author: 'Dr. Amit Sharma (Agronomist)',
+            content: 'Yes, this looks like Early Blight. I recommend pruning the lower leaves to improve air circulation and applying copper fungicide.',
+            isExpert: true
+          }
+        ]
+      },
+      {
+        author: 'Sanjay Kumar',
+        title: 'Bumper Onion harvest in Nashik Mandi',
+        content: 'Onion prices seem to be stable at Nashik APMC today at around ₹2000 per quintal. Anyone planning to sell this week?',
+        category: 'Market',
+        tags: ['Onion', 'Nashik', 'Prices'],
+        language: 'en',
+        upvotes: 8,
+        replies: [
+          {
+            author: 'Vikram Singh',
+            content: 'I am holding for a few more days, expecting a slight price surge by next Monday.',
+            isExpert: false
+          }
+        ]
+      }
+    ]);
+  }
+};
+
 // Get all posts
 router.get('/', async (req, res) => {
   try {
+    await seedCommunityData();
     const posts = await CommunityPost.find().sort({ createdAt: -1 });
     res.json(posts);
   } catch (err) {
