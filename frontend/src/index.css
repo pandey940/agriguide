@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core Brand Colors */
+  --color-night: #080F05;
+  --color-forest: #0D2610;
+  --color-canopy: #163A18;
+  --color-moss: #1E5220;
+  --color-fern: #2D7A30;
+  --color-sage: #4BA84E;
+  --color-mint: #7CCF7F;
+  --color-dew: #B8EBB9;
+  --color-mist: #E8F5E8;
+  --color-foam: #F4FAF4;
+
+  /* Accent & Material Colors */
+  --color-amber: #D4820A;
+  --color-gold: #F0A820;
+  --color-straw: #F8D878;
+  --color-parchment: #FDF7E8;
+  --color-cream: #FEFCF5;
+
+  /* Earth Tones */
+  --color-soil: #2A1506;
+  --color-clay: #5C2E0A;
+  --color-bark: #8B4513;
+  --color-tan: #C68642;
+  --color-sand: #E8C99A;
+
+  /* Neutrals */
+  --color-ink: #0F1A0D;
+  --color-carbon: #2D3528;
+  --color-slate: #4A5A45;
+  --color-stone: #7A8A75;
+  --color-fog: #B8C8B0;
+  --color-pale: #E0EAD8;
+  --color-white: #FFFFFF;
+
+  /* UI Feedback */
+  --color-danger: #B91C1C;
+  --color-warn: #C05621;
+  --color-sky: #1D6FA4;
+  --color-violet: #5B21B6;
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Cabinet Grotesk", sans-serif;
+  --font-mono: "Fira Code", monospace;
+}
+
+/* Base Styles */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Cabinet Grotesk', sans-serif;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  /* Material Icons Configuration */
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+/* Utilities & Components */
+@layer components {
+  /* Grain texture overlay */
+  .bg-grain {
+    position: relative;
+  }
+  
+  .bg-grain::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-foam);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-moss);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest);
+}
