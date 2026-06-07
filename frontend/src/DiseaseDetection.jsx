@@ -70,10 +70,9 @@ const DiseaseDetection = ({ onModuleSwitch }) => {
 
   return (
     <div className="bg-cream text-ink font-sans min-h-screen overflow-x-hidden">
-      {/* TopAppBar Shell (Mobile Only) */}
       <header className="md:hidden w-full h-16 sticky top-0 z-50 bg-cream/80 backdrop-blur-md flex justify-between items-center px-6 border-b border-moss/10">
         <span className="text-2xl font-serif font-bold text-forest">AgriGuide</span>
-        <div className="flex gap-4">
+        <div className="flex gap-4 pr-28">
           <span className="material-symbols-outlined text-forest">language</span>
           <span className="material-symbols-outlined text-forest">notifications</span>
         </div>
@@ -131,7 +130,7 @@ const DiseaseDetection = ({ onModuleSwitch }) => {
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-forest mb-2">Disease Detection</h2>
             <p className="text-stone max-w-lg leading-relaxed text-lg">Instant diagnosis powered by advanced AI. Upload a photo of your crop's leaf to get an immediate health assessment.</p>
           </motion.div>
-          <div className="flex items-center gap-2 bg-foam px-4 py-2 rounded-full border border-moss/10 shadow-sm">
+          <div className="flex items-center gap-2 bg-foam px-4 py-2 rounded-full border border-moss/10 shadow-sm mr-40">
             <span className="material-symbols-outlined text-sage text-lg">language</span>
             <span className="text-sm font-bold text-forest uppercase tracking-tighter">हिन्दी • English • తెలుగు</span>
             <span className="material-symbols-outlined text-stone text-sm">expand_more</span>

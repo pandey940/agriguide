@@ -33,17 +33,24 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen relative">
-      <div className="fixed top-4 right-4 z-[100] flex items-center gap-3 bg-white/90 backdrop-blur-md border border-moss/10 px-4 py-2 rounded-full shadow-lg">
-        <span className="text-sm font-medium text-forest hidden sm:inline">
+      {/* Premium User Profile & Logout Widget */}
+      <div className="fixed top-3 right-4 z-[100] flex items-center gap-2.5 bg-white/80 backdrop-blur-md border border-moss/10 pl-2 pr-3 py-1 rounded-full shadow-md hover:shadow-lg transition-all duration-300">
+        <div className="w-7 h-7 rounded-full bg-forest text-mint flex items-center justify-center font-bold text-xs uppercase shadow-inner">
+          {user?.name ? user.name.charAt(0) : 'U'}
+        </div>
+        <span className="text-xs font-bold text-forest hidden sm:inline">
           {user?.name}
         </span>
+        <span className="h-4 w-[1px] bg-moss/20 hidden sm:inline"></span>
         <button
           onClick={handleLogout}
-          className="text-xs font-bold text-sage hover:text-fern uppercase tracking-widest transition-colors"
+          className="text-[11px] font-extrabold text-sage hover:text-danger uppercase tracking-wider transition-colors flex items-center gap-1 cursor-pointer"
         >
-          Logout
+          <span className="material-symbols-outlined text-sm">logout</span>
+          <span className="hidden xs:inline">Logout</span>
         </button>
       </div>
+
       {currentModule === 'disease' && <DiseaseDetection onModuleSwitch={setCurrentModule} />}
       {currentModule === 'soil' && <SoilAdvisor onModuleSwitch={setCurrentModule} />}
       {currentModule === 'weather' && <WeatherDashboard onModuleSwitch={setCurrentModule} />}

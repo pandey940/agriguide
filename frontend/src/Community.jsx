@@ -72,7 +72,7 @@ const Community = ({ onModuleSwitch }) => {
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-forest mb-2">Farmer Community</h2>
             <p className="text-stone max-w-lg leading-relaxed text-lg">Share experiences, ask questions, and get expert advice on farming techniques.</p>
           </motion.div>
-          <button className="bg-forest text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-forest/20 flex items-center gap-2 hover:scale-105 transition-all">
+          <button className="bg-forest text-white px-6 py-3 rounded-full font-bold shadow-lg shadow-forest/20 flex items-center gap-2 hover:scale-105 transition-all mr-40">
             <span className="material-symbols-outlined">add</span> Create Post
           </button>
         </header>

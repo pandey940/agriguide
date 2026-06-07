@@ -159,7 +159,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
       {/* Mobile Top Bar */}
       <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-md border-b border-moss/10 px-4 h-14 flex items-center justify-between">
         <span className="font-serif text-xl font-bold text-forest">Agri<span className="text-gold italic">Guide</span></span>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 pr-28">
           <span className="text-[9px] font-mono font-bold bg-moss text-white px-2 py-0.5 rounded-full uppercase">v2.0</span>
         </div>
       </header>
@@ -226,7 +226,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
           <div className="text-xs text-stone flex items-center gap-2">
             AgriGuide <span className="text-fog">›</span> <b className="text-moss">Soil Advisory Module</b>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 pr-40">
             <span className="text-[10px] font-mono font-bold bg-moss text-white px-3 py-1 rounded-full uppercase">v2.0 Beta</span>
             <button className="text-xs font-bold text-moss border border-moss/25 px-4 py-1.5 rounded-lg hover:bg-mist transition-all flex items-center gap-1.5">
               <span className="material-symbols-outlined text-base">download</span> Export PDF

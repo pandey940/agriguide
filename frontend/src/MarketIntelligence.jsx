@@ -82,7 +82,7 @@ const MarketIntelligence = ({ onModuleSwitch }) => {
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-forest mb-2">Market Intelligence</h2>
             <p className="text-stone max-w-lg leading-relaxed text-lg">Real-time mandi prices and market trends to help you sell at the right time.</p>
           </motion.div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 mr-40">
             {['All', 'Wheat', 'Rice', 'Onion', 'Cotton', 'Soybean'].map(c => (
               <button 
                 key={c}
