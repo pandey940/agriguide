@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { API_BASE_URL } from './api/config';
 
 const Community = ({ onModuleSwitch }) => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ const Community = ({ onModuleSwitch }) => {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('/api/community');
+      const res = await axios.get(`${API_BASE_URL}/community`);
       setPosts(res.data);
     } catch (err) {
       console.error('Failed to fetch community posts:', err);

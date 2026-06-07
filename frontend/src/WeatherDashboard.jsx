@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
+import { API_BASE_URL } from './api/config';
 
 const WeatherDashboard = ({ onModuleSwitch }) => {
   const [weatherData, setWeatherData] = useState(null);
@@ -12,7 +13,7 @@ const WeatherDashboard = ({ onModuleSwitch }) => {
 
   const fetchWeather = async () => {
     try {
-      const res = await axios.get('/api/weather?lat=18.5204&lon=73.8567');
+      const res = await axios.get(`${API_BASE_URL}/weather?lat=18.5204&lon=73.8567`);
       setWeatherData(res.data);
     } catch (err) {
       console.error('Failed to fetch weather:', err);

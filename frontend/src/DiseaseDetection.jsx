@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
+import { API_BASE_URL } from './api/config';
 
 const DiseaseDetection = ({ onModuleSwitch }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -17,7 +18,7 @@ const DiseaseDetection = ({ onModuleSwitch }) => {
 
   const fetchHistory = async () => {
     try {
-      const res = await axios.get('/api/disease/history');
+      const res = await axios.get(`${API_BASE_URL}/disease/history`);
       setHistory(res.data);
     } catch (err) {
       console.error("Failed to fetch history:", err);
@@ -50,7 +51,7 @@ const DiseaseDetection = ({ onModuleSwitch }) => {
       // const res = await axios.post('/api/disease/detect', formData);
 
       // For this demo, we'll just hit our mock endpoint
-      const res = await axios.post('/api/disease/detect');
+      const res = await axios.post(`${API_BASE_URL}/disease/detect`);
       setResult(res.data);
       fetchHistory();
     } catch (err) {

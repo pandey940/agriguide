@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { API_BASE_URL } from './api/config';
 
 const MarketIntelligence = ({ onModuleSwitch }) => {
   const [prices, setPrices] = useState([]);
@@ -13,7 +14,7 @@ const MarketIntelligence = ({ onModuleSwitch }) => {
 
   const fetchPrices = async () => {
     try {
-      const res = await axios.get('/api/market/prices');
+      const res = await axios.get(`${API_BASE_URL}/market/prices`);
       setPrices(res.data);
     } catch (err) {
       console.error('Failed to fetch market prices:', err);

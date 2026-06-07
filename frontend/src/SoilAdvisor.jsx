@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from './api/config';
 
 const soilCropMapping = [
   {
@@ -75,7 +76,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch('/api/soil/history');
+      const res = await fetch(`${API_BASE_URL}/soil/history`);
       const data = await res.json();
       setHistory(data);
     } catch (err) {
@@ -88,7 +89,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
     if (!file) return;
     setOcrLoading(true);
     try {
-      const res = await fetch('/api/soil/ocr-extract', {
+      const res = await fetch(`${API_BASE_URL}/soil/ocr-extract`, {
         method: 'POST'
       });
       const extractedData = await res.json();
@@ -113,7 +114,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
         soilType: soilData.soilType,
         location: { state: soilData.state, district: soilData.district }
       };
-      const res = await fetch('/api/soil/analyze', {
+      const res = await fetch(`${API_BASE_URL}/soil/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
