@@ -12,7 +12,7 @@ const Community = ({ onModuleSwitch }) => {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/community');
+      const res = await axios.get('/api/community');
       setPosts(res.data);
     } catch (err) {
       console.error('Failed to fetch community posts:', err);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { loginUser } from '../api/auth';
 import { useAuth } from '../context/AuthContext';
@@ -11,6 +11,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const { login } = useAuth();
 
   const handleLogin = async (e) => {
@@ -20,7 +21,8 @@ const Login = () => {
     try {
       const response = await loginUser({ email, password });
       login(response.user, response.token);
-      navigate('/app');
+      const redirectTo = location.state?.from?.pathname || '/app';
+      navigate(redirectTo, { replace: true });
     } catch (err) {
       setError(typeof err === 'string' ? err : 'Invalid credentials. Please try again.');
     } finally {
@@ -36,7 +38,7 @@ const Login = () => {
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          src="C:\Users\Rubina_gupta\.gemini\antigravity\brain\e4b90679-4b2b-45d5-90b0-9499d7d88e83\login_background_nature_1778561145423.png" 
+          src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1200" 
           className="absolute inset-0 w-full h-full object-cover"
           alt="Lush green agriculture field at sunrise"
         />

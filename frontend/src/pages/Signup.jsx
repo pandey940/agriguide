@@ -8,6 +8,7 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -16,6 +17,17 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await signupUser({ name, email, password });
@@ -104,6 +116,23 @@ const Signup = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-white border border-moss/15 rounded-2xl pl-12 pr-4 py-4 text-ink focus:outline-none focus:border-sage focus:ring-4 focus:ring-sage/5 transition-all shadow-sm placeholder:text-stone/40"
                   placeholder="Create a strong password"
+                  minLength={6}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-forest uppercase tracking-widest ml-1">Confirm Password</label>
+              <div className="relative group">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-stone group-focus-within:text-sage transition-colors">lock_reset</span>
+                <input 
+                  type="password" 
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="w-full bg-white border border-moss/15 rounded-2xl pl-12 pr-4 py-4 text-ink focus:outline-none focus:border-sage focus:ring-4 focus:ring-sage/5 transition-all shadow-sm placeholder:text-stone/40"
+                  placeholder="Re-enter your password"
+                  minLength={6}
                   required
                 />
               </div>

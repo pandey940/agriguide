@@ -13,7 +13,7 @@ const MarketIntelligence = ({ onModuleSwitch }) => {
 
   const fetchPrices = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/market/prices');
+      const res = await axios.get('/api/market/prices');
       setPrices(res.data);
     } catch (err) {
       console.error('Failed to fetch market prices:', err);

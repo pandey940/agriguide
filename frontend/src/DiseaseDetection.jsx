@@ -17,7 +17,7 @@ const DiseaseDetection = ({ onModuleSwitch }) => {
 
   const fetchHistory = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/disease/history');
+      const res = await axios.get('/api/disease/history');
       setHistory(res.data);
     } catch (err) {
       console.error("Failed to fetch history:", err);
@@ -47,10 +47,10 @@ const DiseaseDetection = ({ onModuleSwitch }) => {
       // In a real app, you'd use FormData to upload the actual image
       // const formData = new FormData();
       // formData.append('image', selectedImage);
-      // const res = await axios.post('http://localhost:5000/api/disease/detect', formData);
+      // const res = await axios.post('/api/disease/detect', formData);
 
       // For this demo, we'll just hit our mock endpoint
-      const res = await axios.post('http://localhost:5000/api/disease/detect');
+      const res = await axios.post('/api/disease/detect');
       setResult(res.data);
       fetchHistory();
     } catch (err) {

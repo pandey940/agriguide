@@ -75,7 +75,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/soil/history');
+      const res = await fetch('/api/soil/history');
       const data = await res.json();
       setHistory(data);
     } catch (err) {
@@ -88,7 +88,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
     if (!file) return;
     setOcrLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/soil/ocr-extract', {
+      const res = await fetch('/api/soil/ocr-extract', {
         method: 'POST'
       });
       const extractedData = await res.json();
@@ -113,7 +113,7 @@ const SoilAdvisor = ({ onModuleSwitch }) => {
         soilType: soilData.soilType,
         location: { state: soilData.state, district: soilData.district }
       };
-      const res = await fetch('http://localhost:5000/api/soil/analyze', {
+      const res = await fetch('/api/soil/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

@@ -12,7 +12,7 @@ const WeatherDashboard = ({ onModuleSwitch }) => {
 
   const fetchWeather = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/weather?lat=18.5204&lon=73.8567');
+      const res = await axios.get('/api/weather?lat=18.5204&lon=73.8567');
       setWeatherData(res.data);
     } catch (err) {
       console.error('Failed to fetch weather:', err);
